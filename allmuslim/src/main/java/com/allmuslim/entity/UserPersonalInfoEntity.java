@@ -1,0 +1,88 @@
+package com.allmuslim.entity;
+
+import java.util.Set;
+
+import javax.persistence.CascadeType;
+import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
+import javax.persistence.Table;
+
+import com.fasterxml.jackson.annotation.JsonBackReference;
+
+
+
+
+@Entity
+@Table(name="user_personal_info")
+public class UserPersonalInfoEntity {
+	@Id
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	private long id;
+	private String occupation;
+	private long age;
+	private String gender;
+	private String phoneNo;
+	private long otp;
+	private boolean enable;
+	@JsonBackReference
+	@OneToOne(cascade = CascadeType.ALL,fetch = FetchType.LAZY, optional = false)
+    @JoinColumn(name = "info_id", nullable = false)
+	private AppUserEntity appuser;
+	
+	public long getId() {
+		return id;
+	}
+	public void setId(long id) {
+		this.id = id;
+	}
+	public String getOccupation() {
+		return occupation;
+	}
+	public void setOccupation(String occupation) {
+		this.occupation = occupation;
+	}
+	public long getAge() {
+		return age;
+	}
+	public void setAge(long age) {
+		this.age = age;
+	}
+	public String getGender() {
+		return gender;
+	}
+	public void setGender(String gender) {
+		this.gender = gender;
+	}
+	public AppUserEntity getAppuser() {
+		return appuser;
+	}
+	public void setAppuser(AppUserEntity appuser) {
+		this.appuser = appuser;
+	}
+	public String getPhoneNo() {
+		return phoneNo;
+	}
+	public void setPhoneNo(String phoneNo) {
+		this.phoneNo = phoneNo;
+	}
+	public long getOtp() {
+		return otp;
+	}
+	public void setOtp(long otp) {
+		this.otp = otp;
+	}
+	public boolean isEnable() {
+		return enable;
+	}
+	public void setEnable(boolean enable) {
+		this.enable = enable;
+	}
+
+	
+}
