@@ -65,10 +65,7 @@ public class AppUserServiceImpl implements AppUserService{
 		AppUserEntity appUserData=appUserDao.findUserByID(id);
 		userLocation.setAppuserLocation(appUserData);
 		UserLocationEntity resSatatus=appUserDao.addLocation(userLocation);
-		if(resSatatus==null)
-		{
-			
-		}
+		
 		return null;
 	}
 
